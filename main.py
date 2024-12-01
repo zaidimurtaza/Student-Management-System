@@ -54,7 +54,6 @@ async def create_student(student: Student):
     return {"id": str(result.inserted_id)}
 
 
-# Get a list of students with optional filters
 @app.get("/students", response_model=List[StudentResponse])
 async def list_students(
     country: Optional[str] = Query(None, description="Filter by country"),
@@ -66,9 +65,11 @@ async def list_students(
     if age:
         query["age"] = {"$gte": age}
 
-    students = await collection.find(query).to_list(100)
-    return [mongo_to_response(student) for student in students]
-
+    try:
+        students = await collection.find(query).to_list(100)
+        return [mongo_to_response(student) for student in students]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 # Get a specific student by ID
 @app.get("/students/{id}", response_model=StudentResponse)
