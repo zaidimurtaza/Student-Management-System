@@ -8,7 +8,7 @@ from typing import Optional
 app = FastAPI()
 
 # MongoDB connection
-MONGO_URI = "MongoDB connection URL HERE"
+MONGO_URI = "mongodb+srv://zaidimurtaza102:bhGZYgqn4GpWXNfX@student.mzgp2.mongodb.net/?retryWrites=true&w=majority&appName=student"
 client = AsyncIOMotorClient(MONGO_URI)
 db = client["StudentManagementSystem"]  # Replace with your database name
 collection = db["students"]  # Replace with your collection name
