@@ -1,27 +1,35 @@
-# Deploy FastAPI on Render
+# Student Management System
 
-Use this repo as a template to deploy a Python [FastAPI](https://fastapi.tiangolo.com) service on Render.
+The **Student Management System** is a FastAPI-based RESTful API for managing student records, using MongoDB as the database. It provides endpoints for creating, retrieving, updating, and deleting student information, making it suitable for educational institutions or related applications.
 
-See https://render.com/docs/deploy-fastapi or follow the steps below:
+## Features
 
-## Manual Steps
+- **Create**: Add new student records with details such as name, age, and address.
+- **Retrieve**:
+  - List all students.
+  - Fetch a specific student by their unique ID.
+  - Filter students by country or age.
+- **Update**: Modify specific fields of a student's record.
+- **Delete**: Remove a student from the database.
+- **Health Check**: Basic endpoints to test the service.
 
-1. You may use this repository directly or [create your own repository from this template](https://github.com/render-examples/fastapi/generate) if you'd like to customize the code.
-2. Create a new Web Service on Render.
-3. Specify the URL to your new repository or this repository.
-4. Render will automatically detect that you are deploying a Python service and use `pip` to download the dependencies.
-5. Specify the following as the Start Command.
+## Tech Stack
 
-    ```shell
-    uvicorn main:app --host 0.0.0.0 --port $PORT
-    ```
+- **Backend**: FastAPI
+- **Database**: MongoDB (via Motor, an asynchronous driver)
+- **Deployment**: PythonAnywhere (or local execution)
 
-6. Click Create Web Service.
+## Installation and Setup
 
-Or simply click:
+### Prerequisites
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/render-examples/fastapi)
+- Python 3.8 or higher
+- MongoDB instance (local or cloud-based)
+- `pip` for dependency management
 
-## Thanks
+### Steps
 
-Thanks to [Harish](https://harishgarg.com) for the [inspiration to create a FastAPI quickstart for Render](https://twitter.com/harishkgarg/status/1435084018677010434) and for some sample code!
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/zaidimurtaza/Student-Management-System.git
+   cd Student-Management-System
