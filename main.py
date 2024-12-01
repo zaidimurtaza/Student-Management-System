@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from motor.motor_asyncio import AsyncIOMotorClient
 from bson import ObjectId
-
+from typing import Optional
 # FastAPI app initialization
 app = FastAPI()
 
@@ -87,6 +87,14 @@ async def update_student(id: str, student: UpdateStudent):
     if result.modified_count == 0:
         raise HTTPException(status_code=404, detail="Student not found or no changes made")
     return None
+
+@app.get("/m")
+async def root():
+    return {"message": "Hello World"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Optional[str] = None):
+    return {"item_id": item_id, "q": q}
 
 
 # Delete a student
